@@ -5,10 +5,7 @@ export default function Counter() {
   return (
     <div>
       <p class='py-2 text-2xl'>{count}</p>
-      <button
-        class='px-4 py-2 bg-orange-400 text-white rounded cursor-pointer'
-        onClick={() => setCount(count + 1)}
-      >
+      <button class='px-4 py-2 btn btn-primary' onClick={() => setCount(count + 1)}>
         Increment
       </button>
     </div>
