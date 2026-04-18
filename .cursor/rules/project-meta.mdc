@@ -1,0 +1,37 @@
+---
+description: "Project guidelines. Minimum requirements. Proceed based on these guidelines."
+alwaysApply: true
+---
+
+# Project Guidelines
+
+## Rules about file operations
+
+- The rules in the same directory must be strictly followed before performing any file operations.
+- These rules must be followed, rather than relying on your own judgment.
+
+### file types
+
+` **/*.tsx, **/*.test.tsx, **/*.ts, **/*.test.ts, **/*.js, **/*.test.js, **/*.md, **/*.css`
+
+## Semi Issue Driven
+
+- Codes, Tests, and Issues are the only docments that represents the project.
+- No Spec Driven. Do not create documentation unless explicitly user asked.
+- **BUT** we can have only `README.md`. That's why "Semi" Issue Driven.
+
+## Best Practice First
+
+- Use `Context7 MCP` to get the newest infos.
+- Especially, frameworks, libraries, and packages.
+
+## Vertical Slice
+
+- The project proceeds according to a vertically sliced plan.
+- The development environment is always operational and maintained in a state that users can verify.
+
+## Test Driven Without Overboard
+
+- Coverage isn't the most important thing; rather, critical areas should be covered.
+- Error paths are the most important. The happy path is one where the program returns early from an error path and returns a result at the end.
+- All anticipated error paths should be covered by tests.
