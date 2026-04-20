@@ -4,9 +4,8 @@ const handler: ErrorHandler = (e, c) => {
   if ('getResponse' in e) {
     return e.getResponse();
   }
-  console.error(e.message);
   c.status(500);
-  return c.render('Internal Server Error');
+  return c.render('Something went wrong.');
 };
 
 export default handler;

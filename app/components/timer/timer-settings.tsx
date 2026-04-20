@@ -19,18 +19,18 @@ type MinutesFieldProps = {
 
 function MinutesField({ label, minutes, onDecrease, onIncrease }: MinutesFieldProps) {
   return (
-    <div class='space-y-2'>
-      <p>{label}</p>
-      <div class='flex gap-2 justify-center'>
+    <div class='w-fit space-y-1 text-center'>
+      <p class='text-sm'>{label}</p>
+      <div class='inline-flex items-center justify-center gap-1 rounded-box px-1 py-1'>
         <button
           type='button'
-          class='btn btn-square btn-xs btn-outline rounded-full self-center'
+          class='btn btn-square btn-xs btn-outline rounded-full'
           onClick={onDecrease}
         >
           ー
         </button>
-        <div class='flex flex-col text-sm'>
-          <span className='font-mono text-2xl'>
+        <div class='flex min-w-11 flex-col text-[10px] leading-none'>
+          <span className='font-mono text-xl sm:text-2xl'>
             <span aria-live='polite' aria-label={minutes}>
               {minutes.toString().padStart(2, '0')}
             </span>
@@ -39,7 +39,7 @@ function MinutesField({ label, minutes, onDecrease, onIncrease }: MinutesFieldPr
         </div>
         <button
           type='button'
-          class='btn btn-square btn-xs btn-outline rounded-full self-center'
+          class='btn btn-square btn-xs btn-outline rounded-full'
           onClick={onIncrease}
         >
           ＋
@@ -59,8 +59,8 @@ export default function TimerSettingsPanel({
   onSelectTotalCycles,
 }: TimerSettingsPanelProps) {
   return (
-    <div class='space-y-0'>
-      <div class='flex gap-8 justify-center'>
+    <section class='w-full max-w-md space-y-3' aria-label='timer settings'>
+      <div class='flex flex-col items-center gap-4 sm:flex-row sm:items-start sm:justify-center sm:gap-10'>
         <MinutesField
           label='focus'
           minutes={settings.focusMinutes}
@@ -74,9 +74,9 @@ export default function TimerSettingsPanel({
           onIncrease={onIncreaseBreakMinutes}
         />
       </div>
-      <div class='space-y-2'>
-        <p>cycles</p>
-        <div className='rating rating-sm space-x-1'>
+      <div class='space-y-1.5 text-center'>
+        <p class='text-sm'>cycles</p>
+        <div className='rating rating-xs space-x-1 sm:rating-sm'>
           {cycleOptions.map((cycleCount) => (
             <input
               type='radio'
@@ -91,6 +91,6 @@ export default function TimerSettingsPanel({
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
