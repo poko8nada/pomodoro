@@ -1,5 +1,3 @@
-import build from '@hono/vite-build/cloudflare-workers';
-import adapter from '@hono/vite-dev-server/cloudflare';
 import tailwindcss from '@tailwindcss/vite';
 import client from 'honox/vite/client';
 import honox from 'honox/vite';
@@ -9,22 +7,42 @@ import { defineConfig } from 'vite';
 
 const appDir = fileURLToPath(new URL('./app', import.meta.url));
 
-export default defineConfig({
-  resolve: {
-    alias: {
-      '@': appDir,
+export default defineConfig(({ mode }) => {
+  if (mode === 'client') {
+    return {
+      resolve: {
+        alias: {
+          '@': appDir,
+        },
+      },
+      build: {
+        rollupOptions: {
+          input: ['./app/client.ts', './app/style.css'],
+        },
+        manifest: true,
+        emptyOutDir: false,
+      },
+      plugins: [client(), tailwindcss()],
+    };
+  }
+
+  return {
+    resolve: {
+      alias: {
+        '@': appDir,
+      },
     },
-  },
-  plugins: [
-    honox({
-      devServer: { adapter },
-      client: { input: ['/app/client.ts', '/app/style.css'] },
-    }),
-    tailwindcss(),
-    build(),
-    ssg({
-      entry: './app/server.ts',
-    }),
-    client(),
-  ],
+    build: {
+      emptyOutDir: false,
+    },
+    plugins: [
+      honox({
+        client: { input: ['/app/client.ts', '/app/style.css'] },
+      }),
+      tailwindcss(),
+      ssg({
+        entry: './app/server.ts',
+      }),
+    ],
+  };
 });

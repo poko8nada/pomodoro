@@ -1,14 +1,8 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "pomodoro",
-  "main": "./dist/index.js",
+  "pages_build_output_dir": "./dist",
   "compatibility_date": "2026-04-18",
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
-  "assets": {
-    "directory": "./dist"
-  }
   // "vars": {
   //   "MY_VAR": "my-variable"
   // },
